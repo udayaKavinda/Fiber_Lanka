@@ -282,11 +282,18 @@ a:hover { color: var(--color-leaf); }
 }
 .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
 .product-thumb {
-  height: 170px;
+  height: 200px;
   display: flex; align-items: center; justify-content: center;
   font-size: 2.4rem;
   color: white;
   background: linear-gradient(135deg, var(--color-coir), var(--color-coir-dark));
+  overflow: hidden;
+}
+.product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .product-card .body { padding: 22px; }
 .product-card h3 { margin-bottom: 0.4em; font-size: 1.1rem; }
