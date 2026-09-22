@@ -150,11 +150,14 @@ a:hover { color: var(--color-leaf); }
   color: var(--color-coir-dark);
 }
 .brand-mark {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--color-leaf), var(--color-coir));
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--color-white);
   display: flex; align-items: center; justify-content: center;
-  color: white; font-weight: 800; font-size: 1.1rem;
+  box-shadow: 0 0 0 2px rgba(107,66,38,0.12);
+  padding: 3px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 .brand small { display: block; font-weight: 500; font-size: 0.62rem; letter-spacing: 0.12em; color: var(--color-muted); text-transform: uppercase; }
 
@@ -188,7 +191,7 @@ a:hover { color: var(--color-leaf); }
   position: relative;
   background:
     linear-gradient(120deg, rgba(38,33,28,0.82), rgba(44,90,48,0.72)),
-    url('../images/hero-coir-bales.jpg');
+    url('../images/hero-greenhouse.jpg');
   background-size: cover;
   background-position: center;
   color: var(--color-white);
