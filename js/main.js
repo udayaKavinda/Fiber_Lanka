@@ -37,14 +37,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var contactForm = document.querySelector("#contact-form");
   if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
+    contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
-      var success = document.querySelector("#form-success");
-      if (success) {
-        success.classList.add("show");
-        success.scrollIntoView({ behavior: "smooth", block: "center" });
+      var button = contactForm.querySelector('button[type="submit"]');
+      var status = document.querySelector("#form-status");
+      button.disabled = true;
+      button.textContent = "Sending...";
+      status.hidden = false;
+      status.textContent = "Sending your enquiry...";
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 30000);
+      try {
+        var response = await fetch(contactForm.action, {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: new FormData(contactForm),
+          signal: controller.signal
+        });
+        var result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error("Submission failed");
+        status.textContent = "Thank you! Your enquiry has been sent to our team.";
+        contactForm.reset();
+      } catch (error) {
+        status.textContent = "We could not confirm that your enquiry was sent. Your details are still here. Please try again or email info@aunfiberlanka.com directly.";
+      } finally {
+        clearTimeout(timeout);
+        button.disabled = false;
+        button.textContent = "Send Message";
       }
-      contactForm.reset();
     });
   }
 

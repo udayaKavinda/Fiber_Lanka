@@ -60,9 +60,13 @@
 <section class="section">
   <div class="container split" style="align-items:flex-start;">
     <div>
-      <div id="form-success" class="form-success">Thank you! Your message has been recorded. This is a demo form &mdash; connect it to an email service or backend to receive real submissions.</div>
       <h2>Send Us a Message</h2>
-      <form id="contact-form">
+      <p id="form-status" role="status" aria-live="polite" hidden></p>
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="956a7fa4-e687-43fd-aebc-085456d7c074">
+        <input type="hidden" name="subject" value="New enquiry — AUN Fiber Lanka website">
+        <input type="hidden" name="from_name" value="AUN Fiber Lanka Website">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form-grid">
           <div>
             <label for="first-name">First Name*</label>
@@ -92,7 +96,7 @@
         <div style="margin-top:20px;">
           <button type="submit" class="btn btn-primary">Send Message</button>
         </div>
-        <p class="form-note">* Required fields. This form does not send data anywhere yet &mdash; wire it up to your email/CRM provider before going live.</p>
+        <p class="form-note">* Required fields. Your enquiry will be sent to info@aunfiberlanka.com. Messages are processed by Web3Forms.</p>
       </form>
     </div>
 
